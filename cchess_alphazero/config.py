@@ -129,7 +129,7 @@ class LanguageConfig:
     def __init__(self):
         self.enableEnglish = False
         self.words = {
-            '用户名设置为': 'UserName',
+            '用户名设置为': 'UserName changed',
             '重新加载权重': 'Reload The Model',
 
         }
