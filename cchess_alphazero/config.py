@@ -128,6 +128,7 @@ class LanguageConfig:
         self.enableEnglish = False
         words = {
             '用户名设置为': 'UserName',
+            '重新加载权重': 'Reload The Model',
 
         }
 

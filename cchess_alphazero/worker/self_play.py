@@ -23,7 +23,7 @@ from cchess_alphazero.lib.data_helper import get_game_data_filenames, write_game
 from cchess_alphazero.lib.model_helper import load_model_weight, save_as_best_model, load_best_model_weight_from_internet
 from cchess_alphazero.lib.tf_util import set_session_config
 from cchess_alphazero.lib.web_helper import upload_file
-
+from cchess_alphazero.config import LanguageConfig as lc
 logger = getLogger(__name__)
 
 def load_model(config, config_file=None):
@@ -41,7 +41,7 @@ def load_model(config, config_file=None):
             save_as_best_model(model)
             use_history = True
     except Exception as e:
-        logger.info(f"Exception {e}, 重新加载权重")
+        logger.info(f"Exception {e}, {lc.translate('重新加载权重')}")
         return load_model(config, config_file='model_128_l1_config.json')
     return model, use_history
 

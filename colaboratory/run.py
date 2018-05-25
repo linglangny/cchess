@@ -12,7 +12,7 @@ if _PATH_ not in sys.path:
 from cchess_alphazero.lib.logger import setup_logger
 from cchess_alphazero.config import Config, PlayWithHumanConfig
 from cchess_alphazero.worker import self_play
-from cchess_alphazero.config.LanguageConfig import translate as t
+from cchess_alphazero.config import LanguageConfig as lc
 
 def setup_parameters(config):
     # num_cores = mp.cpu_count()
@@ -36,7 +36,7 @@ def setup_parameters(config):
         max_processes = int(sys.argv[2])
     if len(sys.argv) > 1:
         config.internet.username = sys.argv[1]
-        print(f'{t("用户名设置为")}：{config.internet.username}')
+        print(f'{lc.translate("用户名设置为")}：{config.internet.username}')
     search_threads = 20
     print(f"max_processes = {max_processes}, search_threads = {search_threads}")
     config.play.max_processes = max_processes
