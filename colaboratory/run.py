@@ -12,15 +12,15 @@ if _PATH_ not in sys.path:
 from cchess_alphazero.lib.logger import setup_logger
 from cchess_alphazero.config import Config, PlayWithHumanConfig
 from cchess_alphazero.worker import self_play
+from cchess_alphazero.config.LanguageConfig import translate as t
 
 def setup_parameters(config):
-    if len(sys.argv) > 1:
-        config.internet.username = sys.argv[1]
-        print(f'用户名设置为：{config.internet.username}')
-    num_cores = mp.cpu_count()
+    # num_cores = mp.cpu_count()
     max_processes = 2
-    if len(sys.argv) > 2:
-        max_processes = int(sys.argv[2])
+    if len(sys.argv) > 4:
+        flag = sys.argv[4]
+        if flag.lowwer() == 'english':
+            config.language.enableEnglish = True
     if len(sys.argv) > 3:
         flag = sys.argv[3]
         if flag == 'new':
@@ -32,10 +32,16 @@ def setup_parameters(config):
         config.internet.get_latest_digest = f'{config.internet.base_url}/api/get_latest_digest/128x7'
         config.internet.get_evaluate_model_url = f'{config.internet.base_url}/api/query_for_evaluate'
         config.internet.update_elo_url = f'{config.internet.base_url}/api/add_eval_result/'
+    if len(sys.argv) > 2:
+        max_processes = int(sys.argv[2])
+    if len(sys.argv) > 1:
+        config.internet.username = sys.argv[1]
+        print(f'{t("用户名设置为")}：{config.internet.username}')
     search_threads = 20
     print(f"max_processes = {max_processes}, search_threads = {search_threads}")
     config.play.max_processes = max_processes
     config.play.search_threads = search_threads
+
 
 if __name__ == "__main__":
     sys.setrecursionlimit(10000)

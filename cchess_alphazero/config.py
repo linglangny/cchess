@@ -14,6 +14,7 @@ class Config:
         self.opts = Options()
         self.resource = ResourceConfig()
         self.internet = InternetConfig()
+        self.language = LanguageConfig()
 
         if config_type == "mini":
             import configs.mini as c
@@ -122,3 +123,16 @@ class InternetConfig:
         self.update_elo_url = f'{self.base_url}/api/add_eval_result/'
 
 
+class LanguageConfig:
+    def __init__(self):
+        self.enableEnglish = False
+        words = {
+            '用户名设置为': 'UserName',
+
+        }
+
+    def translate(self, word):
+        if word in self.words:
+            return self.words[word]
+        else:
+            return word
