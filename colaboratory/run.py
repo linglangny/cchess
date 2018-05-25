@@ -19,7 +19,7 @@ def setup_parameters(config):
     max_processes = 2
     if len(sys.argv) > 4:
         flag = sys.argv[4]
-        if flag.lowwer() == 'english':
+        if flag.lower() == 'english':
             config.language.enableEnglish = True
     if len(sys.argv) > 3:
         flag = sys.argv[3]
