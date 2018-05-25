@@ -1,0 +1,1 @@
+from cchess_alphazero.config import LanguageConfigdef translate(word):    if word in LanguageConfig.words:        return LanguageConfig.words[word]    else:        return word

@@ -30,6 +30,7 @@ class Config:
         self.trainer = c.TrainerConfig()
         self.eval = c.EvaluateConfig()
 
+
 class ResourceConfig:
     def __init__(self):
         self.project_dir = os.environ.get("PROJECT_DIR", _project_dir())
@@ -74,6 +75,7 @@ class ResourceConfig:
         for d in dirs:
             if not os.path.exists(d):
                 os.makedirs(d)
+
 
 class Options:
     new = False
@@ -126,14 +128,9 @@ class InternetConfig:
 class LanguageConfig:
     def __init__(self):
         self.enableEnglish = False
-        words = {
+        self.words = {
             '用户名设置为': 'UserName',
             '重新加载权重': 'Reload The Model',
 
         }
 
-    def translate(self, word):
-        if word in self.words:
-            return self.words[word]
-        else:
-            return word
